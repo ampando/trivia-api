@@ -8,18 +8,26 @@
 </head>
 <body>
   <div class="container">
-    <button type="submit" class="btn-success" id="dayTrivia">Start</button>
+    <button class="btn-success start" id="triviaParty">Start Game</button>
     <div id="hidden">
-      <h3><span class="clickable" id="question">Question here</span></h3>
-    </div>
+    <h3 class="card" style="width: 18rem;"><span class="clickable" id="question"></span></h3>
     <div class="card" style="width: 18rem;"id="show">
       <div class="card-body">
-        <p class="card-text" id="answer">Answer goes here</p>
+        <form id="radio-form">
+          <input type="radio" name="answers" value="incorrect1" checked>
+          <label><span id="incorrect1"></span></label><br>
+          <input type="radio" name="answers" value="answer">
+          <label><span class="answer"></span></label><br>
+          <input type="radio" name="answers" value="incorrect2">
+          <label><span id="incorrect2"></span></label><br>
+          <input type="radio" name="answers" value="incorrect3">
+          <label><span id="incorrect3"></span></label><br>
+          <button class="btn-primary" type="submit" id='submitAnswer'>Submit</button>
+        </form>
       </div>
-    
-    <div class="showQuestion"></div>
-    <div class="showAnswer"></div>
-    <div class="showTemp"></div>
+    <div class="showErrors"> <span class="showErrors"></span></div>
+    <div class="showAnswer"><span class="answerDisplay"></span></div>
+    </div>
   </div>
 
 </body>
