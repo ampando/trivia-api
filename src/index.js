@@ -10,8 +10,10 @@ $(document).ready(function() {
   $('#triviaParty').click(function() {  
     let promise = Trivia.getTrivia(); 
     
+    let currentResponse; 
     promise.then(function(response) {
-      const body = JSON.parse(response); 
+      const body = JSON.parse(response);
+      currentResponse = body; 
       $('#question').text(`${body.results[0].question}`);
       $('.answer').text(`${body.results[0].correct_answer}`);
       $('#incorrect1').text(`${body.results[0].incorrect_answers[0]}`);
@@ -22,14 +24,13 @@ $(document).ready(function() {
       $('.showErrors').text(""); 
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error}`);
-      $('#submitAnswer').click(function(response, event) {
-        event.preventDefault();
-        const body = JSON.parse(response); 
-        console.log("yo yo"); 
-        $('#hidden').hide(); 
-        $('.showAnswer').toggle(); 
-        $('.answerDisplay').text(`${body.results[0].correct_answer}`);
-      });
+      
+    });
+    $('#submitAnswer').click(function(event) {
+      event.preventDefault(); 
+      $('#hidden').hide(); 
+      $('.answerDisplay').text(`${currentResponse.results[0].correct_answer}`);
+      $('.showAnswer').show(); 
     });
   });
 });

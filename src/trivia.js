@@ -5,7 +5,7 @@ export default class Trivia {
       const url = `https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple`; 
 
       request.onload = function() {
-        if (this.status === 200) {
+        if (this.status === 200 && JSON.parse(request.response).response_code === 0) {
           resolve(request.response); 
         } else {
           reject(request.response); 
